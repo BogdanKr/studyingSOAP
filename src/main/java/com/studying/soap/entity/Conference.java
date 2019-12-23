@@ -2,17 +2,17 @@ package com.studying.soap.entity;
 
 
 public class Conference {
-  private long id;
+  private Long id;
   private String subject;
   private String readerName;
 
-  public Conference(long id, String subject, String readerName) {
+  public Conference(Long id, String subject, String readerName) {
     this.id = id;
     this.subject = subject;
     this.readerName = readerName;
   }
 
-  public long getId() {
+  public Long getId() {
     return id;
   }
 
