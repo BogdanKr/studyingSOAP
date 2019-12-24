@@ -14,7 +14,7 @@ import org.springframework.xml.xsd.XsdSchema;
 
 @EnableWs
 @Configuration
-public class WebServiceConfig extends WsConfigurerAdapter {
+public class WebServiceConfig extends WsConfigurerAdapter{
 
   @Bean
   public ServletRegistrationBean messageDispatcherServlet(ApplicationContext applicationContext) {
@@ -24,19 +24,19 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     return new ServletRegistrationBean(servlet, "/ws/*");
   }
 
-  @Bean
-  public XsdSchema conferenceSchema() {
-    return new SimpleXsdSchema(new ClassPathResource("conferences.xsd"));
-  }
-
   @Bean(name = "conferences")
-  public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema conferenceSchema) {
+  public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema conferencesSchema) {
     DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
     wsdl11Definition.setPortTypeName("ConferencePort");
     wsdl11Definition.setLocationUri("/ws");
     wsdl11Definition.setTargetNamespace("http://spring.io/guides/gs-producing-web-service");
-    wsdl11Definition.setSchema(conferenceSchema);
+    wsdl11Definition.setSchema(conferencesSchema);
     return wsdl11Definition;
+  }
+
+  @Bean
+  public XsdSchema conferencesSchema() {
+    return new SimpleXsdSchema(new ClassPathResource("conferences.xsd"));
   }
 
 }

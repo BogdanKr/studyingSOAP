@@ -23,9 +23,9 @@ public class ConferenceRepo {
 
   }
 
-  public Optional<Conference> findConferenceById(long id) {
+  public Optional<Conference> findConferenceById(Long id) {
     return conferences.stream()
-        .filter(conference -> conference.getId() == id)
+        .filter(conference -> conference.getId().equals(id))
         .findFirst();
   }
 
